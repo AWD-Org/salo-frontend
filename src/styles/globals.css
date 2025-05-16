@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Typography */
+@layer base {
+  html {
+    font-feature-settings: "rlig" 1, "calt" 1;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgb(31 41 55);
+    background-color: rgb(255 255 255);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: rgb(31 41 55);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+  }
+  
+  .dark body {
+    color: rgb(249 250 251);
+    background-color: rgb(26 26 26);
+  }
+  
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: rgb(249 250 251);
+  }
+}
+
+/* Custom scrollbar */
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.4);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.6);
+  }
+
+  /* Dark mode scrollbar */
+  html.dark ::-webkit-scrollbar-thumb {
+    background: rgba(75, 85, 99, 0.4);
+  }
+
+  html.dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(75, 85, 99, 0.6);
+  }
+}
+
+/* Custom components */
+@layer components {
+  /* Focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:ring-offset-0;
+  }
+  
+  /* Notion-like button styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 focus-ring hover:scale-[1.01] active:scale-[0.99];
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-500 text-white hover:bg-primary-600 shadow-sm;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-gray-50 text-gray-900 hover:bg-gray-100 border border-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 dark:border-gray-700;
+  }
+  
+  .btn-ghost {
+    @apply btn bg-transparent text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800;
+  }
+  
+  /* Notion-like card styles */
+  .card {
+    @apply bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 shadow-xs hover:shadow-sm transition-all duration-200;
+  }
+  
+  .card-hover {
+    @apply card hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-notion;
+  }
+  
+  /* Notion-like input styles */
+  .input {
+    @apply w-full px-3 py-2.5 text-sm bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 
+           rounded-lg placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-100
+           focus-ring hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200;
+  }
+  
+  /* Notion-like surface styles */
+  .surface {
+    @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800;
+  }
+  
+  .surface-hover {
+    @apply surface hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-200;
+  }
+  
+  /* Typography enhancements */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Notion-like spacing */
+  .space-y-notion > * + * {
+    margin-top: 1rem;
+  }
+  
+  /* Selection styles */
+  ::selection {
+    background-color: rgb(254 228 223 / 0.3);
+    color: rgb(31 41 55);
+  }
+  
+  .dark ::selection {
+    background-color: rgb(254 228 223 / 0.2);
+    color: rgb(249 250 251);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+  
+  /* Disabled states */
+  .disabled {
+    @apply opacity-60 cursor-not-allowed pointer-events-none;
+  }
+  
+  /* Loading states */
+  .loading {
+    @apply relative overflow-hidden;
+  }
+  
+  .loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    to {
+      left: 100%;
+    }
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break-inside-avoid {
+    break-inside: avoid;
+  }
+}

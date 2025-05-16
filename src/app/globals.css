@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Typography */
+@layer base {
+  html {
+    font-feature-settings: "rlig" 1, "calt" 1;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #1f1f1f;
+    background-color: #fbfbfb;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #1f1f1f;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Custom scrollbar */
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(31, 31, 31, 0.1);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 31, 31, 0.2);
+  }
+}
+
+/* Custom components */
+@layer components {
+  /* Focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-0;
+  }
+  
+  /* Notion-like button styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md font-medium transition-all duration-200 focus-ring hover:scale-[1.01] active:scale-[0.99];
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary text-text;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-gray-50 text-text border border-gray-200 hover:bg-gray-100;
+  }
+  
+  .btn-ghost {
+    @apply btn bg-transparent text-gray-700 hover:bg-gray-100;
+  }
+  
+  /* Notion-like card styles */
+  .card {
+    @apply bg-white rounded-lg border border-border transition-all duration-200;
+  }
+  
+  .card-hover {
+    @apply card hover:border-gray-300;
+  }
+  
+  /* Notion-like input styles */
+  .input {
+    @apply w-full px-3 py-2.5 text-sm bg-white border border-gray-200 
+           rounded-md placeholder-gray-400 text-text
+           focus-ring hover:border-gray-300 transition-all duration-200;
+  }
+  
+  /* Notion-like surface styles */
+  .surface {
+    @apply bg-white border border-gray-200;
+  }
+  
+  .surface-hover {
+    @apply surface hover:bg-gray-50 transition-colors duration-200;
+  }
+  
+  /* Typography enhancements */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Notion-like spacing */
+  .space-y-notion > * + * {
+    margin-top: 1rem;
+  }
+  
+  /* Selection styles */
+  ::selection {
+    background-color: rgba(254, 241, 242, 0.3);
+    color: #1f1f1f;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+  
+  /* Skeleton loading */
+  .skeleton {
+    @apply animate-pulse bg-gray-100 rounded;
+  }
+  
+  .skeleton-line {
+    @apply skeleton h-4 w-full;
+  }
+  
+  .skeleton-circle {
+    @apply skeleton rounded-full;
+  }
+  
+  /* Disabled states */
+  .disabled {
+    @apply opacity-60 cursor-not-allowed pointer-events-none;
+  }
+  
+  /* Loading states with shimmer */
+  .loading {
+    @apply relative overflow-hidden;
+  }
+  
+  .loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0.5) 60%,
+      transparent 100%
+    );
+    animation: shimmer 1.8s ease-in-out infinite;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break-inside-avoid {
+    break-inside: avoid;
+  }
+}

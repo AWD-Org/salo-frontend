@@ -1,0 +1,81 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#FEF1F2',
+          50: '#FEF1F2',
+          100: '#FDE4E6',
+          200: '#FBCED1',
+          500: '#FEF1F2',
+        },
+        secondary: '#1f1f1f',
+        background: '#fbfbfb',
+        text: '#1f1f1f',
+        gray: {
+          25: '#FCFCFD',
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#1F2937',
+          900: '#111827',
+        },
+        border: {
+          DEFAULT: '#f3f4f6',
+          light: '#f9fafb',
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+      },
+      fontSize: {
+        '2xs': ['0.6875rem', { lineHeight: '1rem' }],
+        'xs': ['0.75rem', { lineHeight: '1.125rem' }],
+        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
+        'base': ['1rem', { lineHeight: '1.5rem' }],
+        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+        'xl': ['1.25rem', { lineHeight: '1.875rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+        '5xl': ['3rem', { lineHeight: '1' }],
+        '6xl': ['3.75rem', { lineHeight: '1' }],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '100': '25rem',
+        '104': '26rem',
+        '112': '28rem',
+        '120': '30rem',
+      },
+      borderRadius: {
+        'none': '0',
+        'sm': '0.25rem',
+        'DEFAULT': '0.375rem',
+        'md': '0.5rem',
+        'lg': '0.625rem',
+        'xl': '0.75rem',
+        '2xl': '1rem',
+        '3xl': '1.5rem',
+      },
+      transitionDuration: {
+        '400': '400ms',
+      },
+    },
+  },
+  plugins: [],
+}
