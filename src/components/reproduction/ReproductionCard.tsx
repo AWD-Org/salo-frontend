@@ -72,7 +72,7 @@ export function ReproductionCard({
 
   return (
     <Card variant="interactive" className="group">
-      <div className="p-4">
+      <div>
         <div className="flex justify-between items-start mb-4">
           <div className="space-y-1">
             <h3 className="font-semibold text-gray-900 text-lg">
